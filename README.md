@@ -13,7 +13,7 @@ click on index.html
 ```
 
 ## Config
-game_config contains all data that is needed to be pass from main.v2.js to gol-app.js.<br>
+game_config contains all data that is needed to be pass from main.js to gol-app.js.<br>
 It contains:<br>
 ```
 game_config = 
@@ -58,10 +58,6 @@ game_config =
 		<td>no</td>
 	</tr>
 </table>
-
-
-## Options
-The full source link for the background images for the cells are included in css/main.css.  Uncomment the full links and remove the local references.<br>
 
 ## Contributors
 Please feel free to contact me
