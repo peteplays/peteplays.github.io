@@ -1,0 +1,27 @@
+.game_board{
+	margin: 25px 0;
+	display: inline-block;
+}
+.cell{
+	height: 32px;
+	width: 32px;
+	display: inline-block;
+	margin: 0 0 -6px -4px;
+}
+.alive{
+	background-color: #009480;
+	background-image: url("../images/cream-dust.png");
+	/*background-image: url("http://www.transparenttextures.com/patterns/cream-dust.png");*/
+	box-shadow: inset 0 0 5px #005449;
+}
+.dead{
+	background-color: #8f0500;
+	background-image: url("../images/concrete-wall-2.png");
+	/*background-image: url("http://www.transparenttextures.com/patterns/concrete-wall-2.png");*/
+	box-shadow: inset 0 0 5px #333;   
+}
+
+
+
+
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  	<head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="game of life">
+	    <meta name="author" content="Pete">
+	    <link rel="icon" href="images/favicon.ico">
+
+	    <title>Game of Life</title>
+
+	    <link href="css/bootstrap.min.css" rel="stylesheet">
+	    <link href="css/main.css" rel="stylesheet"> 
+        <!-- <script src="js/jquery.min.js"></script>  -->
+        <script src="js/angular.min.js"></script>
+        <script src="js/gol-app.js"></script> 
+        <script src="js/main.v2.js"></script>
+  	</head>
+
+  	<body ng-app="pete" ng-controller="gol">
+
+        <div class="container">
+          	<h2 class="text-center">The Game Of Life</h2>
+
+            <div class="row">
+               <div class="col-md-offset-3 col-md-6">
+                   <button class="btn btn-success" ng-click="start_game(); game_is_running = true;">Start{{start_game_btn}}</button>
+                   <button class="btn btn-danger" ng-click="stop_game();" ng-show="game_is_running">Stop</button>
+                   <button class="btn btn-info" ng-click="restart_game();" ng-show="game_is_running">Keep Going</button>
+               </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-offset-3 col-md-6">
+                    <label>
+                        Grid Size:
+                        <input type="range" min="3" max="25" step="1" ng-model="grid_size" ng-click="grid_size_change();">
+                    </label>
+                    <button class="btn">{{grid_size}} X {{grid_size}}</button>
+                    <button class="btn" ng-click="update_grid_size();" ng-class="{1:'btn-warning', 0:'btn-primary'}[grid_size_change_class]">{{grid_size_update_text}}Grid Size</button>
+                </div>
+            </div>
+            
+            <div class="row">
+               <div class="col-md-offset-3 col-md-6">
+                   <label ng-init="running_speed = init_running_speed">
+                       Game Speed:
+                       <input type="range" min="100" max="5000" step="10" ng-model="running_speed" ng-change="speed_change();">
+                   </label>
+                   <button class="btn">{{running_speed}}</button>
+                   <button class="btn btn-primary" ng-click="update_run_speed();" ng-class="{1:'btn-warning', 0:'btn-primary'}[speed_change_class]">{{speed_change_update_text}}Running Speed</button>
+               </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10 game_board">
+                    <div ng-repeat="row in board">               
+                        <span ng-repeat="cell in row track by $index">              
+                            <span class="cell" ng-class="{1:'alive', 0:'dead'}[cell]"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- /container -->
+
+        <!--<script src="js/jquery.min.js"></script> 
+    	<script src="js/bootstrap.min.js"></script> -->
+	  
+    </body>
+</html>
+
