@@ -4,7 +4,7 @@
 This is my first project with JRS.  My goal is to sharpen my programming skills and have some fun.  I will be using the rules from <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Game of Life</a> to build a web app.
 
 ## Check It Out!
-<a href="peteplays-peteplays-gol.github.io">The Game of Life Project</a>
+<a href="http://peteplays.github.io/index.html">The Game of Life Project</a>
 
 ## Try Yourself
 ```
