@@ -9,7 +9,7 @@ var gol_app = function(config) {
 
     //--check func is present
     if( config.func === '' ) {
-        alert('APP ERROR!');
+        //TODO:
         location.reload();
     }
 
@@ -49,7 +49,6 @@ var gol_app = function(config) {
 
     //--update the board
     function update_board( app_board, app_grid_size ) {
-        console.log('updating..');
 
         var data = [];        
                
@@ -105,7 +104,6 @@ var gol_app = function(config) {
     function run_game( app_board, app_grid_size, app_speed ) {
     
         APP_RUNNING = setInterval( function() { 
-            console.log('runnning');
             update_board( app_board, app_grid_size );
         }, app_speed );
 
