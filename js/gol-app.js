@@ -1,22 +1,18 @@
-var gol_app = function(config) {
-    //"use strict";
-
-    var app_func = '';
+    var GOL_RUNNING;
     var app_board = [];
     var app_grid_size = '';
     var app_speed = '';
-    var APP_RUNNING;
 
-    //--check func is present
-    if( config.func === '' ) {
-        //TODO:
-        location.reload();
-    }
+var gol_app = function(config) {
+    "use strict";
+
+    var app_func = '';
+    var app_grid_size = '';
 
     app_func = config.func;
     app_board = config.board;
     app_grid_size = config.grid_size;
-    app_speed = config.speed;
+    app_speed = config.speed;    
 
     switch( app_func ) {
         case 'start_game' : 
@@ -26,8 +22,27 @@ var gol_app = function(config) {
         case 'run_game' :
             return run_game( app_board, app_grid_size, app_speed );
         case 'stop_game' :
-            return stop_game( APP_RUNNING );
+            return stop_game();
     }
+
+    //game_func(app_func, app_board, app_grid_size, app_speed);
+
+    // function game_func( app_func, app_board, app_grid_size, app_speed ) {
+    //     return {
+    //         start_game: (function(){
+    //             start_game( app_board, app_grid_size );
+    //         }),
+    //         update_board : (function(){
+    //             update_board( app_board, app_grid_size );
+    //         }),
+    //         run_game : (function(){
+    //             run_game( app_board, app_grid_size, app_speed );
+    //         }),
+    //         stop_game : (function(){
+    //             stop_game();
+    //         })
+    //     };
+    // }
 
     //--create board with 1 and 0
     function create_board( app_board, app_grid_size ) {
@@ -49,7 +64,6 @@ var gol_app = function(config) {
 
     //--update the board
     function update_board( app_board, app_grid_size ) {
-
         var data = [];        
                
         app_board.forEach( function( row, r ) {
@@ -70,40 +84,41 @@ var gol_app = function(config) {
                     } else {
                         alive = 0;
                     }
-                }
+                } 
+
                 data[r][c] = alive;
             });
-        });
-
-
-        function count_neighbors( c, r ) {
-            var count = 0;
-
-            //--return cell status
-            function check_alive( c, r ) {
-                return app_board[c] && app_board[c][r];
-            }
-
-            count += check_alive( c - 1, r - 1 ) ? 1 : 0;         
-            count += check_alive( c - 1, r ) ? 1 : 0;
-            count += check_alive( c - 1, r + 1 ) ? 1 : 0;   
-            count += check_alive( c, r - 1 ) ? 1 : 0;              
-            count += check_alive( c, r + 1 ) ? 1 : 0;   
-            count += check_alive( c + 1, r - 1 ) ? 1 : 0;      
-            count += check_alive( c + 1, r ) ? 1 : 0;   
-            count += check_alive( c + 1, r + 1 ) ? 1 : 0;   
-
-            return count;
-        }
+        });        
         
         app_board = data;
+
         return app_board;
     }
 
-    //--run  game
+    //--count neighbors
+    function count_neighbors( c, r ) {
+        var count = 0;            
+
+        count += check_alive( c - 1, r - 1 ) ? 1 : 0;         
+        count += check_alive( c - 1, r ) ? 1 : 0;
+        count += check_alive( c - 1, r + 1 ) ? 1 : 0;   
+        count += check_alive( c, r - 1 ) ? 1 : 0;              
+        count += check_alive( c, r + 1 ) ? 1 : 0;   
+        count += check_alive( c + 1, r - 1 ) ? 1 : 0;      
+        count += check_alive( c + 1, r ) ? 1 : 0;   
+        count += check_alive( c + 1, r + 1 ) ? 1 : 0;  
+
+        return count;
+    }
+
+    //--return neighbors status
+    function check_alive( c, r ) {
+        return app_board[c] && app_board[c][r];
+    }
+
+    //--run game
     function run_game( app_board, app_grid_size, app_speed ) {
-    
-        APP_RUNNING = setInterval( function() { 
+        GOL_RUNNING = setInterval( function() { 
             update_board( app_board, app_grid_size );
         }, app_speed );
 
@@ -111,8 +126,8 @@ var gol_app = function(config) {
     }
         
     //--stop game
-    function stop_game( APP_RUNNING ) {
-        clearInterval( APP_RUNNING );
+    function stop_game() {
+       clearInterval( GOL_RUNNING );
     }
 
 };
