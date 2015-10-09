@@ -15,6 +15,7 @@
 	    <link href="css/bootstrap.min.css" rel="stylesheet">
 	    <link href="css/main.css" rel="stylesheet"> 
         <script src="js/angular.min.js"></script>
+        <script src="js/underscore.js"></script>
         <script src="js/gol-app.js"></script> 
         <script src="js/main.js"></script>
   	</head>
@@ -37,7 +38,7 @@
                    <div class="col-md-offset-3 col-md-6">
                        <button class="btn btn-danger" ng-click="stop_game();" ng-show="game_is_running" >Stop</button>
                        <button class="btn btn-info" ng-click="restart_game();" ng-show="stop_btn_clicked">Keep Going</button>
-                       <button class="btn btn-info" ng-click="one_step();" ng-show="game_is_running || ut_is_running">One Step</button>
+                       <button class="btn btn-info" ng-click="one_step();" ng-show="ut_is_running">One Step</button>
                        <button class="btn btn-info" id="manual_set_cells_alive_dead" ng-show="ut_is_running">Toggle Cells Alive or Dead</button>
                    </div>
                 </div>
@@ -53,7 +54,7 @@
                     </div>
                 </div>
                 
-                <div class="row">
+                <div class="row" ng-hide="ut_is_running">
                    <div class="col-md-offset-3 col-md-6">
                        <label ng-init="running_speed = init_running_speed">
                            Game Speed

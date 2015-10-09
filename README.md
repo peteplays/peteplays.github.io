@@ -17,7 +17,6 @@ Clicking Start Game or Start Unit Test will rest the game.<br>
 #### Start Game
 Stop, will stop the game.<br>
 Keep Going, will start where the game stopped.<br>
-One Step, will go through the game one progression at a time.<br>
 #### Start Unit Test
 <i>This script is a stand alone script named unittest.js</i>
 One Step, will go through the game one progression at a time.<br>
@@ -80,6 +79,7 @@ I used the following resources on this project.<br>
 <a href="https://www.google.com/fonts">Google Fonts</a><br>
 <a href="https://jquery.com/">jQuery</a><br>
 <a href="http://www.transparenttextures.com/">Transparent Textures</a><br>
+<a href="http://underscorejs.org/">Underscore.js</a>
 And to anyone else I may have missed.<br>
 
 ## Contributors

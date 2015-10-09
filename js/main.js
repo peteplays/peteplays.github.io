@@ -1,10 +1,11 @@
 var board = [];
 var app = angular.module('app', []);
-app.controller('gol', function($scope, $attrs) {
+app.controller('gol', function($scope, $interval) {
 
-    var grid_size = 3;
-    var speed = 2500;
+    var grid_size = 10;
+    var speed = 500;
     var game_config = {};
+    var RUNNING = '';
     
     $scope.grid_size = grid_size;
     $scope.init_running_speed = speed;
@@ -22,7 +23,8 @@ app.controller('gol', function($scope, $attrs) {
         $scope.start_ut_btn_text = '';
     };
     $scope.start_ut_button = function() {
-        $scope.start_game(); 
+        $interval.cancel( RUNNING );
+        populate_grid(); 
         $scope.game_is_running = false; 
         $scope.ut_is_running = true;
         $scope.start_ut_btn_text = ' Over';
@@ -30,21 +32,27 @@ app.controller('gol', function($scope, $attrs) {
     };
     $scope.start_game = function() {
         board = [];
-        populate_grid();        
+        set_game_to_run();       
         reset_grid_size_display();
     };
     $scope.update_grid_size = function() {
         board = [];
-        $scope.outCell = $scope.grid_size;
         grid_size = $scope.grid_size;
         reset_grid_size_display();
-        populate_grid();
+        if( $scope.game_is_running === true) {
+             set_game_to_run();    
+        } else {
+             populate_grid();
+        }
     };
     $scope.update_run_speed = function() { 
         $scope.speed_change_update_text = '';
         $scope.speed_change_class = 0; 
         speed = $scope.running_speed;
-        populate_grid();     
+        set_game_to_run(); 
+
+        $interval.cancel( RUNNING );
+        RUNNING = $interval( $scope.one_step, $scope.running_speed );      
     };
     $scope.grid_size_change = function(){
         display_board = [];
@@ -56,19 +64,12 @@ app.controller('gol', function($scope, $attrs) {
         $scope.speed_change_class = 1;
     };
     $scope.stop_game = function() {
-        game_config.func = 'stop_game';
         $scope.stop_btn_clicked = true;
-
-        board = gol_app(game_config);
-        $scope.display_board = board;
+        $interval.cancel( RUNNING );
     };
     $scope.restart_game = function() {
-        game_config.func = 'run_game';
-        game_config.speed = speed;
         $scope.stop_btn_clicked = false;
-        
-        board = gol_app(game_config);
-        $scope.display_board = board;
+        RUNNING = $interval( $scope.one_step, $scope.running_speed ); 
     };
     $scope.one_step = function() {
         game_config.func = 'update_board';
@@ -91,18 +92,12 @@ app.controller('gol', function($scope, $attrs) {
 
         board = gol_app(game_config);
         $scope.display_board = board;
-    
-        //set_game_to_run();    
-        
     };
     var set_game_to_run = function() {
-        game_config.func = 'run_game';
-        game_config.board = board;
-        game_config.grid_size = grid_size;
-        game_config.speed = speed;
+        populate_grid();
 
-        board = gol_app(game_config);
-        $scope.display_board = board;
+        $interval.cancel( RUNNING );
+        RUNNING = $interval( $scope.one_step, $scope.running_speed ); 
     };
 
 });

@@ -63,7 +63,12 @@ $('.game_board').on('mouseenter', '.cell', function() {
 $('#manual_set_cells_alive_dead').on('click', function() {
     $('#manual_set_cells_alive_dead').toggleClass('btn-info','btn-success');
     $('#manual_set_cells_alive_dead').toggleClass('btn-success','btn-info');
+    $('.wrapper').toggleClass('cell_editing_active');
 });
+
+
+
+
 //--actions when cell is clicked
 $('.game_board').on('click', '.cell', function() {  
     //--change cell alive / dead

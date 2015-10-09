@@ -7,7 +7,6 @@ var gol_app = function(config) {
     "use strict";
 
     var app_func = '';
-    var app_grid_size = '';
 
     app_func = config.func;
     app_board = config.board;
@@ -115,19 +114,4 @@ var gol_app = function(config) {
     function check_alive( c, r ) {
         return app_board[c] && app_board[c][r];
     }
-
-    //--run game
-    function run_game( app_board, app_grid_size, app_speed ) {
-        GOL_RUNNING = setInterval( function() { 
-            update_board( app_board, app_grid_size );
-        }, app_speed );
-
-        return app_board;        
-    }
-        
-    //--stop game
-    function stop_game() {
-       clearInterval( GOL_RUNNING );
-    }
-
 };
