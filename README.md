@@ -79,7 +79,7 @@ I used the following resources on this project.<br>
 <a href="https://www.google.com/fonts">Google Fonts</a><br>
 <a href="https://jquery.com/">jQuery</a><br>
 <a href="http://www.transparenttextures.com/">Transparent Textures</a><br>
-<a href="http://underscorejs.org/">Underscore.js</a>
+<a href="http://underscorejs.org/">Underscore.js</a><br>
 And to anyone else I may have missed.<br>
 
 ## Contributors
