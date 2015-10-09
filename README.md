@@ -18,7 +18,7 @@ Clicking Start Game or Start Unit Test will rest the game.<br>
 Stop, will stop the game.<br>
 Keep Going, will start where the game stopped.<br>
 #### Start Unit Test
-<i>This script is a stand alone script named unittest.js</i>
+<i>This script is a stand alone script named unittest.js</i><br>
 One Step, will go through the game one progression at a time.<br>
 Toggle Cells Alive or Dead, will allow cells to be changed back and forth between alive and dead.<i>It is recommended once the cells have been changed to click the Toggle Cells Alive or Dead button again to stop the cell toggling.</i><br>
 Once the grid is clicked there are several outputs.<br>
